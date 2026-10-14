@@ -1,8 +1,19 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     outline: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #0f172a; /* Deep dark slate background */
+    color: #f8fafc;
 }
 
 #gameboard {
@@ -11,38 +22,39 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    gap: 8px; /* Separación entre casillas */
+    background-color: #334155; /* Color de las líneas de la cuadrícula */
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .cell {
+    background-color: #1e293b; /* Dark cell surface */
+    color: #38bdf8; /* Bright electric blue text for X/O */
     display: flex;
-    justify-content: center;
-    /* Centra horizontalmente */
-    align-items: center;
-    /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
 
-    /* Estilos adicionales recomendados para que se vea bien */
-    font-size: 3rem;
-    /* Tamaño grande para la X y la O */
-    font-weight: bold;
-    /* Negrita para que resalten */
+    font-size: 3rem;         /* Tamaño grande para la X y la O */
+    font-weight: bold;       /* Negrita para que resalten */
     cursor: pointer;
     user-select: none;
+    border-radius: 8px;
 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .cell:hover {
-    transform: translateY(-2px);
-    /* Pequeño salto hacia arriba */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    background-color: #24334a;   /* Subtle highlight on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 #restart-btn {
-    background-color: #248739;
-    /* Un color indigo moderno */
-    color: white;
+    background-color: #22c55e; /* Vibrant neon-green */
+    color: #0f172a;            /* Dark text for high contrast */
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: bold;
@@ -51,21 +63,22 @@
     cursor: pointer;
 
     /* Sombra inicial suave */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 10px rgba(34, 197, 94, 0.25);
 
     /* Transición fluida para el movimiento y la sombra */
     transition: all 0.2s ease-in-out;
-    margin: 10px 100px;
+    margin-top: 24px;
 }
 
 #restart-btn:hover {
     /* Al pasar el mouse: se eleva (-2px) y la sombra se hace más grande */
     transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background-color: #4ade80;
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
 }
 
 #restart-btn:active {
     /* Al hacer clic: baja y la sombra se reduce (efecto de presión) */
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(34, 197, 94, 0.2);
 }

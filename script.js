@@ -40,8 +40,8 @@ const createPlayer = (name, mark, isBot = false) => {
 
 const gameController = (() => {
 
-  const player1 = createPlayer("Jugador 1", "X");
-  const player2 = createPlayer("Jugador 2", "O");
+  const player1 = createPlayer("Player 1", "X");
+  const player2 = createPlayer("Player 2", "O");
 
   let activePlayer = player1;
   let isGameOver = false;
@@ -81,13 +81,13 @@ const gameController = (() => {
 
   const playRound = (index) => {
     if (isGameOver) {
-      return { success: false, message: "El juego ya terminó. Reinicia para jugar de nuevo." };
+      return { success: false, message: "Game is over, please restart the game." };
     }
 
     const moveSuccessful = gameboard.setCell(index, activePlayer.mark);
     
     if (!moveSuccessful) {
-      return { success: false, message: "Casilla ocupada o inválida." };
+      return { success: false, message: "Wrong or invalid cell!" };
     }
 
 
@@ -167,13 +167,13 @@ const displayController = (() => {
       // Comprobamos si el juego terminó o si continúa
       if (result.gameStatus.over) {
         if (result.gameStatus.winner) {
-          updateMessage(`¡Ganó ${result.gameStatus.winner.name} (${result.gameStatus.winner.mark})!`);
+          updateMessage(`${result.gameStatus.winner.name} wins! (${result.gameStatus.winner.mark})!`);
         } else {
-          updateMessage(`¡Empate!`);
+          updateMessage(`It's a draw`);
         }
       } else {
         const nextPlayer = gameController.getActivePlayer();
-        updateMessage(`Turno de: ${nextPlayer.name} (${nextPlayer.mark})`);
+        updateMessage(`It's ${nextPlayer.name}'s turn (${nextPlayer.mark})`);
       }
     });
 
@@ -191,7 +191,7 @@ const displayController = (() => {
     bindEvents();
     render();
     const firstPlayer = gameController.getActivePlayer();
-    updateMessage(`Turno de: ${firstPlayer.name} (${firstPlayer.mark})`);
+    updateMessage(`${firstPlayer.name}'s turn (${firstPlayer.mark})`);
   };
 
   return {
