@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#gameboard {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+
+    /* Estilos adicionales recomendados para que se vea bien */
+    font-size: 3rem;
+    /* Tamaño grande para la X y la O */
+    font-weight: bold;
+    /* Negrita para que resalten */
+    cursor: pointer;
+    user-select: none;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.cell:hover {
+    transform: translateY(-2px);
+    /* Pequeño salto hacia arriba */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+#restart-btn {
+    background-color: #248739;
+    /* Un color indigo moderno */
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    /* Sombra inicial suave */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    /* Transición fluida para el movimiento y la sombra */
+    transition: all 0.2s ease-in-out;
+    margin: 10px 100px;
+}
+
+#restart-btn:hover {
+    /* Al pasar el mouse: se eleva (-2px) y la sombra se hace más grande */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+#restart-btn:active {
+    /* Al hacer clic: baja y la sombra se reduce (efecto de presión) */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
